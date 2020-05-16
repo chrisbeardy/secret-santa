@@ -6,21 +6,18 @@ randomly assigning pairings and sending emails. It can avoid pairing
 couples to their significant other, and allows custom email messages to be 
 specified.
 
-Dependencies
-------------
-
-pytz
-pyyaml
-
 Usage
 -----
 
-Copy config.yml.template to config.yml and enter in the connection details 
-for your outgoing mail server. Modify the participants and couples lists and 
-the email message if you wish.
+First create a virtual environment and install dependencies:
 
-    cd secret-santa/
-    cp config.yml.template config.yml
+```python
+pip install -r requirements.txt
+```
+
+Copy config.yml.template to config.yml and enter in the connection details 
+for your outgoing mail server. Modify the participants, don't pair couples list and 
+the email message if you wish.
 
 Here is the example configuration unchanged:
 
@@ -29,9 +26,9 @@ Here is the example configuration unchanged:
     SMTP_SERVER: smtp.gmail.com
     SMTP_PORT: 587
     USERNAME: you@gmail.com
-    PASSWORD: "you're-password"
+    PASSWORD: "your-password"
 
-    TIMEZONE: 'US/Pacific'
+    TIMEZONE: 'Europe/London'
 
     PARTICIPANTS:
       - Chad <chad@somewhere.net>
@@ -58,12 +55,11 @@ Here is the example configuration unchanged:
 
       The maximum spending limit is 50.00
 
-
       This message was automagically generated from a computer. 
 
       Nothing could possibly go wrong...
 
-      http://github.com/underbluewaters/secret-santa
+      https://github.com/chrisbeardy/secret-santa
 
 Once configured, call secret-santa:
 
@@ -79,11 +75,7 @@ participants.
         Bill ---> Chad
         Sharon ---> Jen
 
-        To send out emails with new pairings,
-        call with the --send argument:
-
-            $ python secret_santa.py --send
-
-To send the emails, call using the `--send` argument
+To send out emails with new pairings,
+call with the --send argument:
 
     python secret_santa.py --send
